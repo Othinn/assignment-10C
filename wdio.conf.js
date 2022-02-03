@@ -56,13 +56,18 @@ exports.config = {
         // 5 instances get started at a time.
         maxInstances: 5,
         //
-        browserName: 'chrome',
-        acceptInsecureCerts: true
+        browserName: 'chrome',acceptInsecureCerts: true,
+        'goog:chromeOptions': {
+            
+            // to run chrome headless the following flags are required
+            // (see https://developers.google.com/web/updates/2017/04/headless-chrome)
+            args: ['--headless', '--no-sandbox', '--disable-gpu', '--disable-infobars', '--disable-dev-shm-usage', '--window-size=1920,1080', 'incognito', '--enable-features=NetworkService,NetworkServiceInProcess']
+            // args: ['--no-sandbox', '--disable-dev-shm-usage', '--window-size=1920,1080', 'incognito', '--enable-features=NetworkService,NetworkServiceInProcess']
         // If outputDir is provided WebdriverIO can capture driver session logs
         // it is possible to configure which logTypes to include/exclude.
         // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
         // excludeDriverLogs: ['bugreport', 'server'],
-    }],
+    }}],
     //
     // ===================
     // Test Configurations
@@ -70,7 +75,7 @@ exports.config = {
     // Define all options that are relevant for the WebdriverIO instance here
     //
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    logLevel: 'info',
+    logLevel: 'error',
     //
     // Set specific log levels per logger
     // loggers:
